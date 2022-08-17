@@ -1,7 +1,7 @@
 export const generateRandomArray = (len) => {
   const newArray = [];
   for (let i = 0; i < len; i++) {
-    newArray.push(randomNumber(10, 500));
+    newArray.push(randomNumber(10, 400));
   }
   return newArray;
 };

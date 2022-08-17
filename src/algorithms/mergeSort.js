@@ -2,7 +2,6 @@ import { sleep } from "../utils/utils";
 
 export const mergeSortFactory = (sortDelay, setData, setBarState) => {
   let aux = [];
-  let state = [];
   const mergeSort = async (data, low, high) => {
     if (low < high) {
       const middleIdx = Math.floor((low + high) / 2);
@@ -40,6 +39,7 @@ export const mergeSortFactory = (sortDelay, setData, setBarState) => {
 
     while (finger1 <= middleInx && finger2 <= high) {
       await sleep(sortDelay);
+
       if (aux[finger1] <= aux[finger2]) {
         data[current] = aux[finger1];
         finger1++;
@@ -50,7 +50,9 @@ export const mergeSortFactory = (sortDelay, setData, setBarState) => {
       current++;
       setData([...data]);
     }
+
     while (finger1 <= middleInx) {
+      await sleep(sortDelay);
       data[current] = aux[finger1];
       current++;
       finger1++;
