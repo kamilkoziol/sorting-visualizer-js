@@ -32,15 +32,20 @@ const Panel = (props) => {
           }
 
           if (props.barState[i] === 0) {
-            return <div className="bar" style={styles}></div>;
+            return <div key={i} className="bar" style={styles}></div>;
           } else {
-            return <div className="bar" style={styles}></div>;
+            return <div key={i} className="bar" style={styles}></div>;
           }
         })}
       </div>
       <div className="panel__controls">
         <label htmlFor="algorithms">Choose algorithm:</label>
-        <select id="algorithms" name="algorithms">
+        <select
+          id="algorithms"
+          name="algorithms"
+          onChange={props.handleSortAlgorithmChange}
+          disabled={props.isSorting}
+        >
           <option value="bubblesort">Bubble Sort</option>
           <option value="mergesort">Merge Sort</option>
         </select>

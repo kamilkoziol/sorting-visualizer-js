@@ -1,6 +1,11 @@
 import { sleep } from "../utils/utils";
 
-export const mergeSortFactory = (sortDelay, setData, setBarState) => {
+export const mergeSortFactory = (
+  sortDelay,
+  setData,
+  setBarState,
+  setIsSorting
+) => {
   let aux = [];
   const mergeSort = async (data, low, high) => {
     if (low < high) {
@@ -20,6 +25,9 @@ export const mergeSortFactory = (sortDelay, setData, setBarState) => {
         ];
         return newArray;
       });
+    }
+    if (low === 0 && high === data.length - 1) {
+      setIsSorting(false);
     }
   };
 

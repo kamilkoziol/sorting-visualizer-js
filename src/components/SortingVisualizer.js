@@ -12,6 +12,12 @@ const SortingVisualizer = () => {
   const [upperBarState, setUpperBarState] = useState([]);
   const [lowerData, setLowerData] = useState([]);
   const [lowerBarState, setLowerBarState] = useState([]);
+  const [isUpperSorting, setIsUpperSorting] = useState(false);
+  const [isLowerSorting, setIsLowerSorting] = useState(false);
+  const [upperAlgorithmName, setUpperAlgorithmName] =
+    useState("bubblesort");
+  const [lowerAlgorithmName, setLowerAlgorithmName] =
+    useState("bubblesort");
 
   useEffect(() => {
     handleGenerateNewArray();
@@ -31,24 +37,28 @@ const SortingVisualizer = () => {
 
   const handleStartSorting = () => {
     const upperAlgorithm = algorithmFactory(
-      "mergesort",
+      upperAlgorithmName,
       sortDelay,
       setUpperData,
-      setUpperBarState
+      setUpperBarState,
+      setIsUpperSorting
     );
     const lowerAlgorithm = algorithmFactory(
-      "bubblesort",
+      lowerAlgorithmName,
       sortDelay,
       setLowerData,
-      setLowerBarState
+      setLowerBarState,
+      setIsLowerSorting
     );
 
     const startSorting = async () => {
       Promise.all([
         upperAlgorithm(upperData, 0, upperData.length - 1),
-        lowerAlgorithm(lowerData),
+        lowerAlgorithm(lowerData, 0, lowerData.length - 1),
       ]);
     };
+    setIsLowerSorting(true);
+    setIsUpperSorting(true);
     startSorting();
   };
 
@@ -61,6 +71,14 @@ const SortingVisualizer = () => {
     setLowerBarState([...Array(parseInt(e.target.value)).fill(0)]);
   };
 
+  const handleUpperSortAlgorithmChange = (e) => {
+    setUpperAlgorithmName(e.target.value);
+  };
+
+  const handleLowerSortAlgorithmChange = (e) => {
+    setLowerAlgorithmName(e.target.value);
+  };
+
   return (
     <div>
       <Header></Header>
@@ -70,16 +88,21 @@ const SortingVisualizer = () => {
         handleArrayLengthChange={handleArrayLengthChange}
         handleSortDelayChange={handleSortDelayChange}
         arrayLength={arrayLength}
+        isSorting={isUpperSorting || isLowerSorting}
       ></Controls>
       <Panel
         data={upperData}
         arrayLength={arrayLength}
         barState={upperBarState}
+        handleSortAlgorithmChange={handleUpperSortAlgorithmChange}
+        isSorting={isUpperSorting || isLowerSorting}
       ></Panel>
       <Panel
         data={lowerData}
         arrayLength={arrayLength}
         barState={lowerBarState}
+        handleSortAlgorithmChange={handleLowerSortAlgorithmChange}
+        isSorting={isUpperSorting || isLowerSorting}
       ></Panel>
     </div>
   );

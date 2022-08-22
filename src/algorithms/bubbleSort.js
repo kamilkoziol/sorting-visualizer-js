@@ -1,6 +1,11 @@
 import { sleep } from "../utils/utils";
 
-export const bubbleSortFactory = (sortDelay, setData, setBarState) => {
+export const bubbleSortFactory = (
+  sortDelay,
+  setData,
+  setBarState,
+  setIsSorting
+) => {
   const bubbleSort = async (data) => {
     for (let i = 0; i < data.length; i++) {
       for (let j = 0; j < data.length - i - 1; j++) {
@@ -28,6 +33,7 @@ export const bubbleSortFactory = (sortDelay, setData, setBarState) => {
       });
     }
     setBarState([...new Array(data.length).fill(0)]);
+    setIsSorting(false);
   };
 
   const swap = async (data, i, j) => {

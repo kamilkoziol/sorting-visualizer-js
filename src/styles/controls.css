@@ -10,6 +10,11 @@
   background-color: var(--background);
 }
 
+div[disabled] {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 .btn {
   color: var(--primary-color);
   border: var(--primary-color) 2px solid;

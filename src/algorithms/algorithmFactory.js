@@ -5,14 +5,15 @@ export const algorithmFactory = (
   algorithmName,
   sortDelay,
   setData,
-  setState
+  setState,
+  setIsSorting
 ) => {
   switch (algorithmName) {
     case "mergesort":
-      return mergeSortFactory(sortDelay, setData, setState);
+      return mergeSortFactory(sortDelay, setData, setState, setIsSorting);
   }
   switch (algorithmName) {
     case "bubblesort":
-      return bubbleSortFactory(sortDelay, setData, setState);
+      return bubbleSortFactory(sortDelay, setData, setState, setIsSorting);
   }
 };

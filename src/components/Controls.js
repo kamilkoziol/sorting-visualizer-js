@@ -2,11 +2,13 @@ import React from "react";
 import "../styles/controls.css";
 
 const Controls = (props) => {
+  console.log(props.isSorting);
   return (
     <div className="controls">
       <div
         className="btn start-btn"
         onClick={props.handleGenerateNewArray}
+        disabled={props.isSorting}
       >
         Generate new array
       </div>
@@ -24,12 +26,14 @@ const Controls = (props) => {
           max="250"
           onChange={props.handleArrayLengthChange}
           value={props.arrayLength}
+          disabled={props.isSorting}
         />
 
         <input
           type="number"
           onChange={props.handleArrayLengthChange}
           value={props.arrayLength}
+          disabled={props.isSorting}
         ></input>
       </div>
 
@@ -42,9 +46,14 @@ const Controls = (props) => {
           min="0"
           max="100"
           onChange={props.handleSortDelayChange}
+          disabled={props.isSorting}
         ></input>
       </div>
-      <div className="btn start-btn" onClick={props.handleStartSorting}>
+      <div
+        className="btn start-btn"
+        onClick={props.handleStartSorting}
+        disabled={props.isSorting}
+      >
         Start sorting
       </div>
     </div>
