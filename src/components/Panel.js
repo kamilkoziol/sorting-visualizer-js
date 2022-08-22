@@ -42,6 +42,7 @@ const Panel = (props) => {
         <label htmlFor="algorithms">Choose algorithm:</label>
         <select id="algorithms" name="algorithms">
           <option value="bubblesort">Bubble Sort</option>
+          <option value="mergesort">Merge Sort</option>
         </select>
       </div>
     </div>
