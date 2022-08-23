@@ -48,6 +48,7 @@ const Panel = (props) => {
         >
           <option value="bubblesort">Bubble Sort</option>
           <option value="mergesort">Merge Sort</option>
+          <option value="insertionsort">Insertion Sort</option>
         </select>
       </div>
     </div>

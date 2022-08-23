@@ -1,5 +1,6 @@
 import { bubbleSortFactory } from "./bubbleSort";
 import { mergeSortFactory } from "./mergeSort";
+import { insertionSortFactory } from "./insertionSort";
 
 export const algorithmFactory = (
   algorithmName,
@@ -11,9 +12,14 @@ export const algorithmFactory = (
   switch (algorithmName) {
     case "mergesort":
       return mergeSortFactory(sortDelay, setData, setState, setIsSorting);
-  }
-  switch (algorithmName) {
     case "bubblesort":
       return bubbleSortFactory(sortDelay, setData, setState, setIsSorting);
+    case "insertionsort":
+      return insertionSortFactory(
+        sortDelay,
+        setData,
+        setState,
+        setIsSorting
+      );
   }
 };

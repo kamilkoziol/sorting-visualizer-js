@@ -16,8 +16,10 @@ export const bubbleSortFactory = (
           return newArray;
         });
         if (data[j] > data[j + 1]) {
+          await sleep(sortDelay);
           await swap(data, j, j + 1);
         }
+
         setData([...data]);
         setBarState((prev) => {
           const newArray = [...prev];
@@ -37,7 +39,6 @@ export const bubbleSortFactory = (
   };
 
   const swap = async (data, i, j) => {
-    await sleep(sortDelay);
     const temp = data[i];
     data[i] = data[j];
     data[j] = temp;

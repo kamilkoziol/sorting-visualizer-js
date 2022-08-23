@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/controls.css";
 
 const Controls = (props) => {
-  console.log(props.isSorting);
   return (
     <div className="controls">
       <div
